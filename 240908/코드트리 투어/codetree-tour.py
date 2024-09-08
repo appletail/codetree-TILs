@@ -57,19 +57,22 @@ class CodeTreeLand:
 
     def sell_product(self):
         flag = True
-        while flag:
+        while self.product and flag:
             profit, id, revenue, dest = self.product[0]
             if not self.existID.get(id):
                 heapq.heappop(self.product)
             else:
                 flag = False
-        profit, id, revenue, dest = self.product[0]
-        if profit > 0:
-            print(-1)
+        if self.product:
+            profit, id, revenue, dest = self.product[0]
+            if profit > 0:
+                print(-1)
+            else:
+                profit, id, revenue, dest = heapq.heappop(self.product)
+                del self.existID[id]
+                print(id)
         else:
-            profit, id, revenue, dest = heapq.heappop(self.product)
-            del self.existID[id]
-            print(id)
+            print(-1)
 
     def change_depart(self, s):
         self.dijkstra(s)
