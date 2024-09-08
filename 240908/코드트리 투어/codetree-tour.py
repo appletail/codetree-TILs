@@ -52,7 +52,8 @@ class CodeTreeLand:
         heapq.heappush(self.product, (-(revenue - self.distance[dest]), id, revenue, dest))
     
     def delete_product(self, id):
-        del self.existID[id]
+        if self.existID.get(id):
+            del self.existID[id]
 
     def sell_product(self):
         flag = True
