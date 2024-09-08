@@ -2,7 +2,7 @@ import heapq
 
 class CodeTreeLand:
     def __init__(self, n, m, edges):
-        self.INF = 100
+        self.INF = 1e10
         self.n = n
         self.m = m
         self.edges = edges
@@ -63,6 +63,7 @@ class CodeTreeLand:
                 heapq.heappop(self.product)
             else:
                 flag = False
+
         if self.product:
             profit, id, revenue, dest = self.product[0]
             if profit > 0:
